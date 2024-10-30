@@ -88,7 +88,20 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <buildArgs>
+                  <buildArg>-Ob</buildArg>
+                  <buildArg>--add-modules</buildArg>
+                  <buildArg>jdk.incubator.vector</buildArg>
+                  <buildArg>--enable-preview</buildArg>
+                  <buildArg>-H:+ForeignAPISupport</buildArg>
+              </buildArgs>
+            </configuration>
 
+          </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -116,6 +129,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <jvmArguments>--add-modules jdk.incubator.vector --enable-preview</jvmArguments>
+                    <compilerArguments>--add-modules jdk.incubator.vector --enable-preview</compilerArguments>
                 </configuration>
             </plugin>
         </plugins>
